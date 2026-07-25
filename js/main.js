@@ -25,9 +25,32 @@ const weatherLayer = document.querySelector('#weather-layer');
 const networkStatus = document.querySelector('#network-status');
 const state = { enemies: [], achievements: [], enemyIndex: 0, questionIndex: 0, playerHealth: 100, enemyHealth: 100, combo: 0, highestCombo: 0, correct: 0, wrong: 0, roundCorrect: 0, roundWrong: 0, damageDealt: 0, damageTaken: 0, startedAt: 0, locked: false, typeTimer: null, presentation: false, invincible: false, currentScreen: 'loading', typingActive: false, currentMessage: '', dataReady: false };
 const settings = { textSpeed: 24, largeText: false, reducedMotion: false, screenShake: true };
-const moves = { correct: { damage: 25 }, wrong: { damage: 20 } };
+const moves = { correct: { damage: 34 }, wrong: { damage: 34 } };
 let audioContext;
 const savedProgress = JSON.parse(localStorage.getItem('quizmon-progress') || '{"unlocked":[],"stats":{"battlesWon":0}}');
+
+function spawnEnemyProjectile(enemyShortName) {
+  const proj = document.createElement('div');
+  proj.className = 'attack-projectile';
+  if (enemyShortName === 'ARC') {
+    proj.classList.add('projectile-pokeball');
+  } else if (enemyShortName === 'JAY') {
+    proj.classList.add('projectile-hollow-purple');
+  } else if (enemyShortName === 'PAT') {
+    proj.classList.add('projectile-dark-matter');
+  } else {
+    proj.classList.add('projectile-pokeball');
+  }
+  damageLayer.appendChild(proj);
+  window.setTimeout(() => proj.remove(), 1000);
+}
+
+function spawnPlayerProjectile() {
+  const proj = document.createElement('div');
+  proj.className = 'attack-projectile projectile-aster-packet';
+  damageLayer.appendChild(proj);
+  window.setTimeout(() => proj.remove(), 800);
+}
 
 function loadSettings() { Object.assign(settings, JSON.parse(localStorage.getItem('quizmon-settings') || '{}')); document.body.classList.toggle('large-text', settings.largeText); document.body.classList.toggle('reduced-motion', settings.reducedMotion); }
 function saveSettings() { localStorage.setItem('quizmon-settings', JSON.stringify(settings)); }
@@ -83,6 +106,8 @@ function loadEnemy() {
   state.enemyHealth = 100;
   enemyHp.style.width = '100%';
   enemyHpText.textContent = '100';
+  playerHp.style.width = `${state.playerHealth}%`;
+  playerHpText.textContent = state.playerHealth;
   roundLabel.textContent = `0${state.enemyIndex + 1} / 03`;
   const currentWeather = enemy.weather; weatherLabel.textContent = currentWeather; arena.className = `arena stage-${enemy.stage} stage-${currentWeather.toLowerCase()}`; weatherLayer.setAttribute('data-weather', currentWeather);
   updateNetworkStatus();
@@ -123,45 +148,72 @@ function answer(index, button) {
 }
 
 function correctAnswer(button) {
-  state.correct += 1; state.roundCorrect += 1; state.combo += 1; state.highestCombo = Math.max(state.highestCombo, state.combo); state.damageDealt += moves.correct.damage; button.classList.add('correct'); enemySprite.classList.add('is-hit', 'flash'); playerSprite.classList.add('is-attacking');
-  beep(660, .16, 'triangle'); showDamage(moves.correct.damage, 'enemy'); state.enemyHealth = Math.max(0, state.enemyHealth - moves.correct.damage); updateBars();
+  state.correct += 1; state.roundCorrect += 1; state.combo += 1; state.highestCombo = Math.max(state.highestCombo, state.combo); state.damageDealt += 34; button.classList.add('correct'); enemySprite.classList.add('is-hit', 'flash'); playerSprite.classList.add('is-attacking');
+  spawnPlayerProjectile();
+  beep(660, .16, 'triangle'); showDamage(34, 'enemy');
+  state.enemyHealth = Math.max(0, state.enemyHealth - 34);
+  updateBars();
   const enemy = state.enemies[state.enemyIndex];
-  const praise = enemy.shortName === 'ARC' ? 'Nice work! You are getting the hang of it.' : enemy.shortName === 'JAY' ? 'Interesting... You answered correctly.' : 'Impressive. Your understanding grows stronger.';
+  const praise = enemy.shortName === 'ARC' ? 'Direct hit! You threw your data packet!' : enemy.shortName === 'JAY' ? 'Super effective! Jay’s glitch code cracked.' : 'Mastery hit! Boss Pat’s dark matter shatters.';
   battleStatus.textContent = praise;
   if (state.combo >= 5) arena.classList.add('critical-flash');
-  window.setTimeout(() => { playerSprite.classList.remove('is-attacking'); enemySprite.classList.remove('is-hit', 'flash'); finishTurn(); }, 850);
+  window.setTimeout(() => { playerSprite.classList.remove('is-attacking'); enemySprite.classList.remove('is-hit', 'flash'); finishTurn(); }, 950);
 }
 
 function wrongAnswer(button) {
   state.wrong += 1; state.roundWrong += 1; state.combo = 0; button.classList.add('wrong'); playerSprite.classList.add('is-hit', 'flash'); enemySprite.classList.add('is-attacking');
-  const damage = moves.wrong.damage; state.damageTaken += state.invincible ? 0 : damage; beep(180, .16, 'sawtooth'); showDamage(state.invincible ? 0 : damage, 'player'); state.playerHealth = Math.max(0, state.playerHealth - (state.invincible ? 0 : damage)); updateBars();
   const enemy = state.enemies[state.enemyIndex];
-  const taunt = enemy.shortName === 'ARC' ? 'Not quite. Think carefully before choosing.' : enemy.shortName === 'JAY' ? 'Your packet was lost. Connection interrupted.' : 'Knowledge alone is not enough. The network collapses under pressure.';
+  spawnEnemyProjectile(enemy.shortName);
+  const damage = 34; state.damageTaken += state.invincible ? 0 : damage; beep(180, .16, 'sawtooth'); showDamage(state.invincible ? 0 : damage, 'player');
+  state.playerHealth = Math.max(0, state.playerHealth - (state.invincible ? 0 : damage));
+  updateBars();
+  const taunt = enemy.shortName === 'ARC' ? 'Arc throws a Pokeball at you! -34 HP' : enemy.shortName === 'JAY' ? 'Jay blasts you with a Glitched Hollow Purple! -34 HP' : 'Boss Pat strikes you with Dark Matter! -34 HP';
   battleStatus.textContent = taunt;
   arena.classList.add('is-shaking');
-  window.setTimeout(() => { playerSprite.classList.remove('is-hit', 'flash'); enemySprite.classList.remove('is-attacking'); arena.classList.remove('is-shaking'); finishTurn(); }, 850);
+  window.setTimeout(() => { playerSprite.classList.remove('is-hit', 'flash'); enemySprite.classList.remove('is-attacking'); arena.classList.remove('is-shaking'); finishTurn(); }, 950);
 }
 
 function finishTurn() {
-  if (state.playerHealth <= 0) return showGameOver();
+  if (state.playerHealth <= 0) {
+    return showGameOver('SIGNAL LOST (0 HP)', 'You made 3 wrong choices and ran out of health! Restart the battle to try again.');
+  }
   const enemy = getCurrentEnemy();
   if (!enemy?.questions) return;
   const isLastQuestion = state.questionIndex >= enemy.questions.length - 1;
   if (isLastQuestion) {
-    if (state.roundCorrect >= 2) return finishEnemy();
-    return showGameOver();
+    if (state.roundCorrect === 3) {
+      return finishEnemy('KO'); // 3/3 -> Opponent Dies/KO'd
+    } else if (state.roundCorrect === 2) {
+      return finishEnemy('FORFEIT'); // 2/3 -> Opponent Forfeits
+    } else {
+      return showGameOver('MATCH LOST', `You got ${state.roundCorrect}/3 correct. You need at least 2/3 correct answers to beat ${enemy.shortName}!`);
+    }
   }
   state.questionIndex += 1; state.locked = false; renderQuestion();
 }
 
-function finishEnemy() {
+function finishEnemy(reason = 'KO') {
   enemySprite.classList.add('is-defeated');
   const enemy = state.enemies[state.enemyIndex];
-  window.setTimeout(() => { enemySprite.classList.remove('is-defeated'); if (state.enemyIndex === state.enemies.length - 1) showVictory(); else { state.enemyIndex += 1; loadEnemy(); } }, 900);
-  questionText.textContent = `${enemy.shortName} is out of energy!`; battleStatus.textContent = enemy.victory; answers.innerHTML = '';
-  if (enemy.shortName === 'ARC') { questionText.textContent = 'Excellent work. You are ready for the next challenge.'; }
-  if (enemy.shortName === 'JAY') { questionText.textContent = 'The connection has been terminated.'; }
-  if (enemy.shortName === 'PAT') { questionText.textContent = 'Congratulations. You have mastered Internet Architecture & Packet Switching Fundamentals.'; }
+  state.enemyHealth = 0;
+  updateBars();
+  if (reason === 'KO') {
+    questionText.textContent = `${enemy.shortName} was knocked out! (3/3 Perfect)`;
+    battleStatus.textContent = `${enemy.shortName} collapsed from your 3 consecutive correct answers!`;
+  } else {
+    questionText.textContent = `${enemy.shortName} forfeits the battle! (2/3 Correct)`;
+    battleStatus.textContent = `${enemy.shortName} admits defeat after your strong performance!`;
+  }
+  answers.innerHTML = '';
+  window.setTimeout(() => {
+    enemySprite.classList.remove('is-defeated');
+    if (state.enemyIndex === state.enemies.length - 1) {
+      showVictory();
+    } else {
+      state.enemyIndex += 1;
+      loadEnemy();
+    }
+  }, 1200);
 }
 
 function updateNetworkStatus() {

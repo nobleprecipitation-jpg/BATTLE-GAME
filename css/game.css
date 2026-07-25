@@ -976,3 +976,201 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* --- CUSTOM ATTACK PROJECTILE ANIMATIONS --- */
+.attack-projectile {
+  position: absolute;
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* 1. ARC'S POKEBALL THROW */
+.projectile-pokeball {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff4d4d 0%, #cc0000 45%, #111 46%, #111 54%, #ffffff 55%, #dddddd 100%);
+  border: 2px solid #111;
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.8), 0 0 30px rgba(116, 213, 239, 0.5);
+  animation: arcPokeballThrow 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.projectile-pokeball::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #111;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+@keyframes arcPokeballThrow {
+  0% {
+    top: 15%;
+    right: 18%;
+    transform: scale(0.4) rotate(0deg);
+    opacity: 1;
+  }
+  40% {
+    top: 8%;
+    right: 42%;
+    transform: scale(1.1) rotate(360deg);
+    opacity: 1;
+  }
+  85% {
+    top: 55%;
+    left: 18%;
+    transform: scale(1.5) rotate(720deg);
+    opacity: 1;
+  }
+  100% {
+    top: 55%;
+    left: 18%;
+    transform: scale(2.2) rotate(840deg);
+    opacity: 0;
+    filter: brightness(2);
+  }
+}
+
+/* 2. JAY'S GLITCHED HOLLOW PURPLE */
+.projectile-hollow-purple {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #c77dff 35%, #7b2cbf 65%, #3c096c 100%);
+  box-shadow: 0 0 25px #9d4edd, 0 0 50px #7b2cbf, 0 0 80px #3c096c, inset 0 0 15px #ffffff;
+  animation: jayHollowPurple 850ms ease-in-out forwards;
+}
+
+.projectile-hollow-purple::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px dashed #e0aaff;
+  animation: hollowPurpleSpin 400ms linear infinite;
+}
+
+@keyframes hollowPurpleSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes jayHollowPurple {
+  0% {
+    top: 14%;
+    right: 18%;
+    transform: scale(0.3) skew(0deg);
+    opacity: 0.8;
+    filter: drop-shadow(-4px 0 #ff0055) drop-shadow(4px 0 #00ffff);
+  }
+  30% {
+    top: 14%;
+    right: 25%;
+    transform: scale(1.4) skew(-10deg);
+    opacity: 1;
+    filter: drop-shadow(-8px 0 #ff0055) drop-shadow(8px 0 #00ffff);
+  }
+  80% {
+    top: 52%;
+    left: 18%;
+    transform: scale(2.2) skew(15deg);
+    opacity: 1;
+    filter: drop-shadow(-12px 0 #ff0055) drop-shadow(12px 0 #00ffff);
+  }
+  100% {
+    top: 52%;
+    left: 18%;
+    transform: scale(3.5);
+    opacity: 0;
+    filter: brightness(3);
+  }
+}
+
+/* 3. BOSS PAT'S DARK MATTER ATTACK */
+.projectile-dark-matter {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #000000 20%, #10002b 50%, #240046 75%, #e01e37 100%);
+  box-shadow: 0 0 40px #e01e37, 0 0 80px #7209b7, inset 0 0 25px #000000;
+  animation: patDarkMatter 950ms cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+.projectile-dark-matter::before {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  border: 3px solid rgba(224, 30, 55, 0.6);
+  box-shadow: 0 0 20px #e01e37;
+  animation: darkMatterPulse 300ms ease-in-out infinite alternate;
+}
+
+@keyframes darkMatterPulse {
+  from { transform: scale(0.9); opacity: 0.7; }
+  to { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes patDarkMatter {
+  0% {
+    top: 8%;
+    right: 18%;
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0.9;
+  }
+  40% {
+    top: 10%;
+    right: 32%;
+    transform: scale(1.8) rotate(180deg);
+    opacity: 1;
+  }
+  85% {
+    top: 50%;
+    left: 16%;
+    transform: scale(2.8) rotate(360deg);
+    opacity: 1;
+  }
+  100% {
+    top: 50%;
+    left: 16%;
+    transform: scale(4.5) rotate(540deg);
+    opacity: 0;
+    filter: brightness(2.5) contrast(2);
+  }
+}
+
+/* 4. PLAYER ASTER'S PACKET ATTACK */
+.projectile-aster-packet {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #74d5ef 60%, #3a86ff 100%);
+  box-shadow: 0 0 20px #74d5ef, 0 0 40px #ffd166;
+  animation: asterPacketFly 750ms ease-out forwards;
+}
+
+@keyframes asterPacketFly {
+  0% {
+    bottom: 12%;
+    left: 16%;
+    transform: scale(0.4);
+    opacity: 1;
+  }
+  80% {
+    top: 14%;
+    right: 18%;
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    top: 14%;
+    right: 18%;
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
