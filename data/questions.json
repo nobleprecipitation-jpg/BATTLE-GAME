@@ -4,27 +4,108 @@
       "name": "Arc",
       "shortName": "ARC",
       "questions": [
-        {"text":"What is the Internet?","choices":["A single computer in a classroom","A global network of connected devices","A type of software update","A storage drive"],"correct":1},
-        {"text":"What is a packet?","choices":["A small unit of data sent over a network","A router setting","A cable connector","A web browser"],"correct":0},
-        {"text":"What does a router do?","choices":["Stores files permanently","Forwards data between networks","Creates electricity","Deletes messages"],"correct":1}
+        {
+          "text": "Which milestone in 1969 laid the foundation for the modern Internet by connecting four U.S. universities under DARPA funding?",
+          "choices": [
+            "The establishment of the ARPANET experimental computer network",
+            "The public adoption of TCP/IP as a standard networking protocol",
+            "The invention of the World Wide Web by scientist Tim Berners-Lee",
+            "The commercial deployment of high-speed fiber-optic broadband"
+          ],
+          "correct": 0
+        },
+        {
+          "text": "What fundamental advantage does a global network of interconnected devices provide over isolated standalone systems?",
+          "choices": [
+            "It eliminates the physical hardware requirement for data storage",
+            "It enables distributed resource sharing and standardized data exchange",
+            "It guarantees zero latency and immune security against data interception",
+            "It allows single-core processors to execute tasks without operating systems"
+          ],
+          "correct": 1
+        },
+        {
+          "text": "In modern network architecture, what is the primary role of a router when handling incoming data streams?",
+          "choices": [
+            "Permanently archiving raw data frames inside internal system memory",
+            "Analyzing destination IP addresses to forward packets across networks",
+            "Translating high-level source code into binary machine instructions",
+            "Modulating electrical signal frequencies across local analog copper wire"
+          ],
+          "correct": 1
+        }
       ]
     },
     {
       "name": "Jay",
       "shortName": "JAY",
       "questions": [
-        {"text":"What is packet switching?","choices":["Sending data as one huge file","Breaking data into packets and sending them independently","Encrypting data only","Deleting duplicate data"],"correct":1},
-        {"text":"Which protocol is commonly used for web browsing?","choices":["HTTP","FTP","SMTP","DNS"],"correct":0},
-        {"text":"What is the main role of a switch in a network?","choices":["Connects different networks together","Directs data within a local network","Browses the web","Stores backups"],"correct":1}
+        {
+          "text": "How does packet switching optimize network transmission compared to traditional circuit switching?",
+          "choices": [
+            "By establishing a dedicated, unbroken physical path prior to sending data",
+            "By dividing data into independent packets routed dynamically over shared links",
+            "By transmitting entire unsegmented files in a single uninterrupted burst",
+            "By converting digital signals into analog acoustic waves across node switches"
+          ],
+          "correct": 1
+        },
+        {
+          "text": "Which application layer protocol operates over TCP port 80/443 to facilitate hypertext document transfer across web clients?",
+          "choices": [
+            "HTTP / HTTPS protocol suites for web content retrieval",
+            "FTP / SFTP protocol suites for remote file management",
+            "SMTP / IMAP protocol suites for electronic mail transfer",
+            "DNS / DHCP protocol suites for network IP assignment"
+          ],
+          "correct": 0
+        },
+        {
+          "text": "What distinguishes a Layer 2 network switch from a Layer 3 network router during data delivery?",
+          "choices": [
+            "Switches route data globally using IP, while routers handle local MAC addresses",
+            "Switches forward frames using MAC addresses within a local LAN segment",
+            "Switches convert binary packets into optical pulses for long-haul backbones",
+            "Switches encrypt data payloads, while routers decrypt incoming header fields"
+          ],
+          "correct": 1
+        }
       ]
     },
     {
       "name": "Boss Pat",
       "shortName": "PAT",
       "questions": [
-        {"text":"What does the OSI model describe?","choices":["How data moves through layers of network communication","How to code websites","How to build a CPU","How to print documents"],"correct":0},
-        {"text":"What can cause packet loss?","choices":["A strong Wi-Fi signal","Network congestion or transmission errors","A full battery","A larger screen"],"correct":1},
-        {"text":"What is congestion in a network?","choices":["Too much data trying to use the same path","A missing router","A slow mouse","A low-power CPU"],"correct":0}
+        {
+          "text": "What is the primary conceptual purpose of the 7-Layer Open Systems Interconnection (OSI) reference model?",
+          "choices": [
+            "Standardizing network functions into distinct modular layers for interoperability",
+            "Compiling client-side web application scripts into assembly instructions",
+            "Enforcing hardware encryption standards on consumer router motherboard chips",
+            "Allocating physical storage sectors across network-attached hard drive arrays"
+          ],
+          "correct": 0
+        },
+        {
+          "text": "Which technical condition is most directly responsible for triggering packet loss in high-traffic routing nodes?",
+          "choices": [
+            "Excessive router buffer overflow caused by severe network traffic congestion",
+            "Incompatible screen resolution settings between local sender and receiver",
+            "High battery charge levels causing thermal throttling on client devices",
+            "Automated DNS domain record refreshes during active TCP transmission"
+          ],
+          "correct": 0
+        },
+        {
+          "text": "What occurs at the transport layer when network congestion degrades packet delivery performance?",
+          "choices": [
+            "TCP congestion control reduces transmission window size and triggers retransmissions",
+            "The network router automatically deletes all client user accounts from the database",
+            "The underlying physical fiber cables shut down to prevent electrical overheating",
+            "Web browser applications force a hard system reboot to clear network cache"
+          ],
+          "correct": 0
+        }
       ]
     }
   ]
