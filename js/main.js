@@ -144,7 +144,23 @@ function renderQuestion() {
     return;
   }
   questionText.textContent = question.text; battleStatus.textContent = `Question ${state.questionIndex + 1} of 3 · Choose the answer that keeps your connection alive.`; answers.innerHTML = '';
-  question.choices.forEach((choice, index) => { const button = document.createElement('button'); button.className = 'answer-button fade-in'; button.style.animationDelay = `${index * 70}ms`; const letter = String.fromCharCode(65 + index); button.innerHTML = `<span class="choice-key">${letter}</span><span class="choice-label">${choice}</span>`; button.dataset.index = index; button.addEventListener('click', () => answer(index, button)); button.addEventListener('mouseenter', () => button.classList.add('is-focused')); button.addEventListener('mouseleave', () => button.classList.remove('is-focused')); answers.appendChild(button); });
+  
+  // Randomize choices order dynamically
+  const indexedChoices = question.choices.map((choice, origIndex) => ({ choice, isCorrect: origIndex === question.correct }));
+  for (let i = indexedChoices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indexedChoices[i], indexedChoices[j]] = [indexedChoices[j], indexedChoices[i]];
+  }
+
+  indexedChoices.forEach((item, index) => {
+    const button = document.createElement('button'); button.className = 'answer-button fade-in'; button.style.animationDelay = `${index * 70}ms`; const letter = String.fromCharCode(65 + index); button.innerHTML = `<span class="choice-key">${letter}</span><span class="choice-label">${item.choice}</span>`;
+    button.addEventListener('click', () => {
+      if (state.locked) return; state.locked = true;
+      initAudio(); beep(440);
+      if (item.isCorrect) correctAnswer(button); else wrongAnswer(button);
+    });
+    button.addEventListener('mouseenter', () => button.classList.add('is-focused')); button.addEventListener('mouseleave', () => button.classList.remove('is-focused')); answers.appendChild(button);
+  });
 }
 
 function answer(index, button) {
@@ -235,7 +251,11 @@ function updateNetworkStatus() {
   networkStatus.className = `network-status ${cssClass}`.trim();
 }
 
-function showGameOver() { showOverlay('CONNECTION LOST', 'Your signal dropped to zero. The lesson is not over—restart the network simulation and try again.', 'Retry', startGame, 'Return to Title', () => { closeOverlay(); showScreen('title'); }); }
+function showGameOver(customTitle, customMessage) {
+  const title = customTitle || 'CONNECTION LOST';
+  const message = customMessage || 'Your health dropped to zero or you missed too many questions. Restart the battle and try again!';
+  showOverlay(title, message, 'Retry Battle', () => { closeOverlay(); startGame(); }, 'Return to Title', () => { closeOverlay(); showScreen('title'); });
+}
 function showVictory() { updateAchievements(); showOverlay('MISSION COMPLETE', `You mastered the lesson with ${state.correct} correct answers and ${state.wrong} misses. Accuracy: ${getAccuracy()}%.`, 'Play Again', startGame, 'View Results', showResults); }
 function showResults() { const accuracy = getAccuracy(); const elapsed = Math.max(1, Math.round((Date.now() - state.startedAt) / 1000)); overlayPanel.innerHTML = `<p class="eyebrow">BATTLE REPORT</p><h2>Knowledge unlocked.</h2><div class="stats-grid"><span>ACCURACY<b>${accuracy}%</b></span><span>RANK<b>${getRank(accuracy)}</b></span><span>COMBO<b>${state.highestCombo}x</b></span><span>TIME<b>${elapsed}s</b></span><span>DAMAGE DEALT<b>${state.damageDealt}</b></span><span>DAMAGE TAKEN<b>${state.damageTaken}</b></span></div><button data-overlay-action="close">Return to Title</button>`; overlayPanel.querySelector('button').onclick = () => { closeOverlay(); showScreen('title'); }; }
 function showOverlay(title, message, primaryText, primaryAction, secondaryText, secondaryAction) { overlay.hidden = false; overlayPanel.className = 'overlay-panel'; overlayPanel.innerHTML = `<h2>${title}</h2><p>${message}</p><button data-overlay-action="primary">${primaryText}</button><button class="secondary" data-overlay-action="secondary">${secondaryText}</button>`; overlayPanel.querySelector('[data-overlay-action="primary"]').onclick = primaryAction; overlayPanel.querySelector('[data-overlay-action="secondary"]').onclick = secondaryAction; }
