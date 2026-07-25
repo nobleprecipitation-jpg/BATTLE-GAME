@@ -1,0 +1,31 @@
+{
+  "enemies": [
+    {
+      "name": "Arc",
+      "shortName": "ARC",
+      "questions": [
+        {"text":"What is the Internet?","choices":["A single computer in a classroom","A global network of connected devices","A type of software update","A storage drive"],"correct":1},
+        {"text":"What is a packet?","choices":["A small unit of data sent over a network","A router setting","A cable connector","A web browser"],"correct":0},
+        {"text":"What does a router do?","choices":["Stores files permanently","Forwards data between networks","Creates electricity","Deletes messages"],"correct":1}
+      ]
+    },
+    {
+      "name": "Jay",
+      "shortName": "JAY",
+      "questions": [
+        {"text":"What is packet switching?","choices":["Sending data as one huge file","Breaking data into packets and sending them independently","Encrypting data only","Deleting duplicate data"],"correct":1},
+        {"text":"Which protocol is commonly used for web browsing?","choices":["HTTP","FTP","SMTP","DNS"],"correct":0},
+        {"text":"What is the main role of a switch in a network?","choices":["Connects different networks together","Directs data within a local network","Browses the web","Stores backups"],"correct":1}
+      ]
+    },
+    {
+      "name": "Boss Pat",
+      "shortName": "PAT",
+      "questions": [
+        {"text":"What does the OSI model describe?","choices":["How data moves through layers of network communication","How to code websites","How to build a CPU","How to print documents"],"correct":0},
+        {"text":"What can cause packet loss?","choices":["A strong Wi-Fi signal","Network congestion or transmission errors","A full battery","A larger screen"],"correct":1},
+        {"text":"What is congestion in a network?","choices":["Too much data trying to use the same path","A missing router","A slow mouse","A low-power CPU"],"correct":0}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="440" viewBox="0 0 480 440">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#74d5ef"/>
+      <stop offset="1" stop-color="#67e8b0"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)" transform="translate(40,20)">
+    <!-- body -->
+    <rect x="120" y="160" rx="32" ry="32" width="160" height="160" fill="#0b1220" stroke="#274060" stroke-width="6" />
+    <!-- jacket highlight -->
+    <path d="M140 200 L200 260 L200 320 L280 320 L280 260 L340 200 Z" fill="url(#g1)" opacity="0.15" />
+    <!-- head -->
+    <circle cx="200" cy="100" r="64" fill="#ffeccf" stroke="#f1d7a1" stroke-width="4" />
+    <!-- hair -->
+    <path d="M150 80 C160 30, 260 30, 280 80 C260 70, 200 62, 150 80 Z" fill="#1d2330" />
+    <!-- eyes -->
+    <circle cx="180" cy="100" r="8" fill="#111" />
+    <circle cx="220" cy="100" r="8" fill="#111" />
+    <!-- smile -->
+    <path d="M180 120 Q200 135 220 120" stroke="#c96" stroke-width="3" fill="none" stroke-linecap="round" />
+    <!-- accessory (badge) -->
+    <circle cx="260" cy="220" r="12" fill="#ffd166" stroke="#b8821e" stroke-width="2" />
+    <!-- legs -->
+    <rect x="150" y="320" width="40" height="80" rx="12" fill="#111827" />
+    <rect x="240" y="320" width="40" height="80" rx="12" fill="#111827" />
+    <!-- shoes -->
+    <ellipse cx="170" cy="412" rx="22" ry="10" fill="#090b0f" />
+    <ellipse cx="260" cy="412" rx="22" ry="10" fill="#090b0f" />
+    <!-- subtle aura under feet -->
+    <ellipse cx="220" cy="380" rx="90" ry="20" fill="rgba(116,213,239,0.06)" />
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "achievements": [
+    {"id":"first-victory","name":"First Victory","description":"Defeat the Learning League.","icon":"★"},
+    {"id":"perfect-battle","name":"Perfect Battle","description":"Finish a run with 100% accuracy.","icon":"◆"},
+    {"id":"no-damage","name":"Flawless Victory","description":"Finish a run without taking damage.","icon":"✦"},
+    {"id":"quiz-master","name":"Quiz Master","description":"Answer every question correctly.","icon":"◎"},
+    {"id":"combo-five","name":"Critical Master","description":"Reach a five-answer combo.","icon":"⚡"}
+  ]
+}

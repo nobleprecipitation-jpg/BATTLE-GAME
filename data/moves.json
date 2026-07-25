@@ -1,0 +1,6 @@
+{
+  "moves": {
+    "correct": {"name":"KNOWLEDGE BURST","damage":25,"effect":"spark"},
+    "wrong": {"name":"LESSON LAG","damage":20,"effect":"impact"}
+  }
+}

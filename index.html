@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>QuizMon Battle</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="app" class="app-shell" aria-live="polite">
+    <section id="loading-screen" class="screen loading-screen is-active">
+      <div class="loading-card">
+        <div class="loading-badge">Q</div>
+        <p class="eyebrow">BOOTING NETWORK SIM</p>
+        <h1>QuizMon Battle</h1>
+        <p>Loading battle assets, lesson data, and the training arena...</p>
+        <div class="loading-bar"><span></span></div>
+      </div>
+    </section>
+
+    <section id="intro-screen" class="screen intro-screen" hidden>
+      <div class="intro-panel">
+        <p class="eyebrow">MISSION BRIEFING</p>
+        <h2>Master Internet Architecture & Packet Switching Fundamentals</h2>
+        <p>Three challengers stand in your way. Answer each question correctly to protect your connection, weaken each rival, and prove you understand how data travels through the internet.</p>
+        <div class="intro-actions">
+          <button class="menu-button primary" data-action="start">Begin the battle</button>
+          <button class="menu-button" data-action="credits">View credits</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="title-screen" class="screen title-screen" hidden>
+      <div id="studio-ident" class="studio-ident" aria-label="QuizMon Battle studio"><span class="ident-sigil">Q</span><span>STARBOARD<br><b>LEARNING LABS</b></span></div>
+      <div class="sky-noise"></div>
+      <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="cloud cloud-a" aria-hidden="true"></div>
+      <div class="cloud cloud-b" aria-hidden="true"></div>
+      <div class="title-copy">
+        <p class="eyebrow">THE LEARNING LEAGUE</p>
+        <h1><span>QUIZ</span><strong>MON</strong><em>BATTLE</em></h1>
+        <p class="tagline">Think fast. Learn boldly. Become the champion.</p>
+      </div>
+      <div class="hero-mon" aria-label="Aster, your study companion"><div class="mon-aura"></div><div class="mon-body"><span class="mon-eye eye-left"></span><span class="mon-eye eye-right"></span><span class="mon-mark"></span><span class="mon-smile"></span></div><span class="mon-foot foot-left"></span><span class="mon-foot foot-right"></span></div>
+      <div class="title-actions">
+        <button class="menu-button primary" data-action="start">Start a battle <span>↵</span></button>
+        <button class="menu-button" data-action="gallery">Gallery <span>◈</span></button>
+        <button class="menu-button" data-action="trophies">Trophy room <span>★</span></button>
+        <button class="menu-button" data-action="settings">Settings <span>⚙</span></button>
+        <button class="menu-button" data-action="credits">Credits <span>✦</span></button>
+      </div>
+      <p class="press-prompt"><span class="pulse-dot"></span> Press Enter to begin</p>
+      <p class="version">BUILD 01 · CLASSROOM EDITION</p>
+    </section>
+
+    <section id="battle-screen" class="screen battle-screen" hidden>
+      <header class="battle-header">
+        <div class="header-info">
+          <div class="brand-mark">QM <span>/</span> BATTLE</div>
+          <div class="stage-label"><span class="live-dot"></span> LIVE LESSON <b id="round-label">01 / 03</b><i id="weather-label">SUNNY</i></div>
+        </div>
+        <div class="header-actions">
+          <div id="network-status" class="network-status">Excellent Connection</div>
+          <button class="icon-button" data-action="pause" aria-label="Pause battle">Ⅱ</button>
+        </div>
+      </header>
+      <div id="arena" class="arena stage-classroom">
+        <div class="battle-field">
+          <div class="stage-backdrop"><div class="window-grid"></div><div class="desk desk-one"></div><div class="desk desk-two"></div><div class="chalkboard"><span>KNOWLEDGE</span><small>is your superpower</small></div><div class="plant"><i></i><i></i><i></i></div></div>
+          <div class="sparks" aria-hidden="true"></div>
+          <div class="damage-layer" id="damage-layer" aria-hidden="true"></div>
+          <div class="weather-layer" id="weather-layer" aria-hidden="true"></div>
+          <div class="combatant enemy-side"><div class="nameplate enemy-plate"><span id="enemy-level">LV. 01</span><strong id="enemy-name">MIRA</strong><div class="hp-track"><span id="enemy-hp" class="hp-fill"></span></div><small><b id="enemy-hp-text">100</b> / 100 HP</small></div><div class="enemy-stage"><div id="enemy-sprite" class="sprite enemy-sprite sprite-mira"><div class="sprite-face"></div><div class="sprite-body"></div></div><div class="battle-platform enemy-platform" aria-hidden="true"></div></div></div>
+          <div class="combatant player-side"><div id="player-sprite" class="sprite player-sprite"><div class="sprite-face"></div><div class="sprite-body"></div></div><div class="nameplate player-plate"><span>STREAK <b id="combo-label">0</b></span><strong>ASTER <small>LV. 05</small></strong><div class="hp-track"><span id="player-hp" class="hp-fill"></span></div><small><b id="player-hp-text">100</b> / 100 HP</small></div></div>
+        </div>
+      </div>
+      <section class="battle-console">
+        <div class="lesson-prompt"><div class="dialogue-heading"><span class="portrait portrait-teacher">✦</span><span class="prompt-label">YOUR MOVE</span></div><h2 id="question-text">Loading your first challenge...</h2><p id="battle-status">Choose the answer that powers up your knowledge.</p></div>
+        <div id="answers" class="answer-grid" role="group" aria-label="Answer choices"></div>
+      </section>
+    </section>
+
+    <section id="overlay" class="overlay" hidden>
+      <div class="overlay-panel" id="overlay-panel"></div>
+    </section>
+  </main>
+  <link rel="stylesheet" href="css/game.css">
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
