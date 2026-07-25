@@ -2,6 +2,6 @@
   "enemies": [
     {"name":"Arc","shortName":"ARC","title":"The Beginner Scout","level":"01","sprite":"sprite-mira","stage":"classroom","weather":"SUNNY","intro":"Arc steps onto the training field. Your first lesson begins now.","victory":"Arc falls back. Your fundamentals are solid."},
     {"name":"Jay","shortName":"JAY","title":"The Digital Glitch Warrior","level":"02","sprite":"sprite-sol","stage":"laboratory","weather":"RAIN","intro":"Jay cracks the air with violet static. Packet switching is about to get serious.","victory":"Jay shatters into sparks. The network is yours."},
-    {"name":"Boss Pat","shortName":"PAT","title":"The Final Boss","level":"03","sprite":"sprite-nova","stage":"frozen","weather":"NIGHT","intro":"Boss Pat appears in the frozen core. One final check on internet architecture awaits.","victory":"Boss Pat collapses into the dark. You mastered the lesson."}
+    {"name":"Pat","shortName":"PAT","title":"The Final Boss","level":"03","sprite":"sprite-nova","stage":"frozen","weather":"NIGHT","intro":"Boss Pat appears in the frozen core. One final check on internet architecture awaits.","victory":"Boss Pat collapses into the dark. You mastered the lesson."}
   ]
 }
