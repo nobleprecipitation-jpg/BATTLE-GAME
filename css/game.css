@@ -501,6 +501,7 @@ body {
 .damage-layer {
   position: absolute;
   inset: 0;
+  z-index: 30;
   pointer-events: none;
 }
 
@@ -980,19 +981,21 @@ body {
 /* --- CUSTOM ATTACK PROJECTILE ANIMATIONS --- */
 .attack-projectile {
   position: absolute;
-  z-index: 25;
+  z-index: 35 !important;
   pointer-events: none;
 }
 
 /* 1. ARC'S POKEBALL THROW */
 .projectile-pokeball {
-  width: 38px;
-  height: 38px;
+  position: absolute;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ff4d4d 0%, #cc0000 45%, #111 46%, #111 54%, #ffffff 55%, #dddddd 100%);
-  border: 2px solid #111;
-  box-shadow: 0 0 15px rgba(255, 77, 77, 0.8), 0 0 30px rgba(116, 213, 239, 0.5);
-  animation: arcPokeballThrow 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  background: radial-gradient(circle at 35% 35%, #ff3333 0%, #b30000 45%, #111111 46%, #111111 54%, #ffffff 55%, #dddddd 100%);
+  border: 3px solid #000000;
+  box-shadow: 0 0 20px #ff3333, 0 0 40px #74d5ef, inset 0 0 10px #ffffff;
+  animation: arcPokeballThrow 850ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 35 !important;
 }
 
 .projectile-pokeball::after {
@@ -1001,59 +1004,62 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #ffffff;
-  border: 2px solid #111;
-  box-shadow: 0 0 8px #ffffff;
+  border: 2px solid #000000;
+  box-shadow: 0 0 10px #ffffff;
 }
 
 @keyframes arcPokeballThrow {
   0% {
     top: 15%;
-    right: 18%;
-    transform: scale(0.4) rotate(0deg);
+    right: 15%;
+    transform: scale(0.5) rotate(0deg);
     opacity: 1;
   }
-  40% {
-    top: 8%;
-    right: 42%;
-    transform: scale(1.1) rotate(360deg);
+  35% {
+    top: 5%;
+    right: 40%;
+    transform: scale(1.3) rotate(360deg);
     opacity: 1;
   }
-  85% {
+  75% {
     top: 55%;
-    left: 18%;
-    transform: scale(1.5) rotate(720deg);
+    right: 75%;
+    transform: scale(1.6) rotate(720deg);
     opacity: 1;
   }
   100% {
-    top: 55%;
-    left: 18%;
-    transform: scale(2.2) rotate(840deg);
+    top: 58%;
+    right: 78%;
+    transform: scale(2.5) rotate(840deg);
     opacity: 0;
-    filter: brightness(2);
+    filter: brightness(2.5);
   }
 }
 
 /* 2. JAY'S GLITCHED HOLLOW PURPLE */
 .projectile-hollow-purple {
-  width: 65px;
-  height: 65px;
+  position: absolute;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 0%, #c77dff 35%, #7b2cbf 65%, #3c096c 100%);
-  box-shadow: 0 0 25px #9d4edd, 0 0 50px #7b2cbf, 0 0 80px #3c096c, inset 0 0 15px #ffffff;
-  animation: jayHollowPurple 850ms ease-in-out forwards;
+  background: radial-gradient(circle, #ffffff 0%, #e0aaff 25%, #9d4edd 55%, #3c096c 85%, #10002b 100%);
+  box-shadow: 0 0 35px #c77dff, 0 0 70px #9d4edd, 0 0 110px #3a0ca3, inset 0 0 20px #ffffff;
+  animation: jayHollowPurple 900ms ease-in-out forwards;
+  z-index: 35 !important;
 }
 
 .projectile-hollow-purple::before {
   content: '';
   position: absolute;
-  inset: -10px;
+  inset: -14px;
   border-radius: 50%;
-  border: 2px dashed #e0aaff;
-  animation: hollowPurpleSpin 400ms linear infinite;
+  border: 3px dashed #e0aaff;
+  box-shadow: 0 0 25px #c77dff;
+  animation: hollowPurpleSpin 350ms linear infinite;
 }
 
 @keyframes hollowPurpleSpin {
@@ -1062,115 +1068,120 @@ body {
 
 @keyframes jayHollowPurple {
   0% {
-    top: 14%;
-    right: 18%;
+    top: 15%;
+    right: 15%;
     transform: scale(0.3) skew(0deg);
-    opacity: 0.8;
-    filter: drop-shadow(-4px 0 #ff0055) drop-shadow(4px 0 #00ffff);
+    opacity: 0.9;
+    filter: drop-shadow(-6px 0 #ff0055) drop-shadow(6px 0 #00ffff);
   }
   30% {
-    top: 14%;
+    top: 15%;
     right: 25%;
-    transform: scale(1.4) skew(-10deg);
+    transform: scale(1.6) skew(-12deg);
     opacity: 1;
-    filter: drop-shadow(-8px 0 #ff0055) drop-shadow(8px 0 #00ffff);
+    filter: drop-shadow(-10px 0 #ff0055) drop-shadow(10px 0 #00ffff);
   }
-  80% {
-    top: 52%;
-    left: 18%;
-    transform: scale(2.2) skew(15deg);
+  75% {
+    top: 55%;
+    right: 75%;
+    transform: scale(2.4) skew(15deg);
     opacity: 1;
-    filter: drop-shadow(-12px 0 #ff0055) drop-shadow(12px 0 #00ffff);
+    filter: drop-shadow(-14px 0 #ff0055) drop-shadow(14px 0 #00ffff);
   }
   100% {
-    top: 52%;
-    left: 18%;
-    transform: scale(3.5);
+    top: 58%;
+    right: 78%;
+    transform: scale(3.8);
     opacity: 0;
-    filter: brightness(3);
+    filter: brightness(3.5) contrast(2);
   }
 }
 
 /* 3. BOSS PAT'S DARK MATTER ATTACK */
 .projectile-dark-matter {
-  width: 75px;
-  height: 75px;
+  position: absolute;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  background: radial-gradient(circle, #000000 20%, #10002b 50%, #240046 75%, #e01e37 100%);
-  box-shadow: 0 0 40px #e01e37, 0 0 80px #7209b7, inset 0 0 25px #000000;
-  animation: patDarkMatter 950ms cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  background: radial-gradient(circle, #000000 20%, #10002b 45%, #240046 70%, #ff0055 100%);
+  box-shadow: 0 0 50px #ff0055, 0 0 90px #7209b7, 0 0 130px #3f37c9, inset 0 0 30px #000000;
+  animation: patDarkMatter 1000ms cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  z-index: 35 !important;
 }
 
 .projectile-dark-matter::before {
   content: '';
   position: absolute;
-  inset: -15px;
+  inset: -18px;
   border-radius: 50%;
-  border: 3px solid rgba(224, 30, 55, 0.6);
-  box-shadow: 0 0 20px #e01e37;
-  animation: darkMatterPulse 300ms ease-in-out infinite alternate;
+  border: 4px solid rgba(255, 0, 85, 0.8);
+  box-shadow: 0 0 30px #ff0055;
+  animation: darkMatterPulse 250ms ease-in-out infinite alternate;
 }
 
 @keyframes darkMatterPulse {
-  from { transform: scale(0.9); opacity: 0.7; }
-  to { transform: scale(1.2); opacity: 1; }
+  from { transform: scale(0.85); opacity: 0.7; }
+  to { transform: scale(1.3); opacity: 1; }
 }
 
 @keyframes patDarkMatter {
   0% {
-    top: 8%;
-    right: 18%;
+    top: 10%;
+    right: 15%;
     transform: scale(0.2) rotate(0deg);
     opacity: 0.9;
   }
   40% {
     top: 10%;
-    right: 32%;
-    transform: scale(1.8) rotate(180deg);
+    right: 35%;
+    transform: scale(2) rotate(270deg);
     opacity: 1;
   }
-  85% {
-    top: 50%;
-    left: 16%;
-    transform: scale(2.8) rotate(360deg);
+  80% {
+    top: 55%;
+    right: 75%;
+    transform: scale(3) rotate(540deg);
     opacity: 1;
   }
   100% {
-    top: 50%;
-    left: 16%;
-    transform: scale(4.5) rotate(540deg);
+    top: 58%;
+    right: 78%;
+    transform: scale(4.8) rotate(720deg);
     opacity: 0;
-    filter: brightness(2.5) contrast(2);
+    filter: brightness(3) contrast(2.5);
   }
 }
 
 /* 4. PLAYER ASTER'S PACKET ATTACK */
 .projectile-aster-packet {
-  width: 34px;
-  height: 34px;
+  position: absolute;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 0%, #74d5ef 60%, #3a86ff 100%);
-  box-shadow: 0 0 20px #74d5ef, 0 0 40px #ffd166;
-  animation: asterPacketFly 750ms ease-out forwards;
+  background: radial-gradient(circle, #ffffff 0%, #74d5ef 55%, #3a86ff 100%);
+  box-shadow: 0 0 25px #74d5ef, 0 0 50px #ffd166, inset 0 0 10px #ffffff;
+  animation: asterPacketFly 800ms ease-out forwards;
+  z-index: 35 !important;
 }
 
 @keyframes asterPacketFly {
   0% {
-    bottom: 12%;
-    left: 16%;
+    bottom: 15%;
+    left: 15%;
     transform: scale(0.4);
     opacity: 1;
   }
-  80% {
-    top: 14%;
-    right: 18%;
-    transform: scale(1.5);
+  75% {
+    top: 15%;
+    right: 15%;
+    transform: scale(1.8);
     opacity: 1;
   }
   100% {
-    top: 14%;
-    right: 18%;
-    transform: scale(2.2);
+    top: 15%;
+    right: 15%;
+    transform: scale(2.6);
     opacity: 0;
+    filter: brightness(2.5);
   }
 }
