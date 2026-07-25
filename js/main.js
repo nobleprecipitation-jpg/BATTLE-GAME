@@ -111,7 +111,7 @@ function renderQuestion() {
     return;
   }
   questionText.textContent = question.text; battleStatus.textContent = `Question ${state.questionIndex + 1} of 3 · Choose the answer that keeps your connection alive.`; answers.innerHTML = '';
-  question.choices.forEach((choice, index) => { const button = document.createElement('button'); button.className = 'answer-button fade-in'; button.style.animationDelay = `${index * 70}ms`; button.textContent = choice; button.dataset.index = index; button.addEventListener('click', () => answer(index, button)); button.addEventListener('mouseenter', () => button.classList.add('is-focused')); button.addEventListener('mouseleave', () => button.classList.remove('is-focused')); answers.appendChild(button); });
+  question.choices.forEach((choice, index) => { const button = document.createElement('button'); button.className = 'answer-button fade-in'; button.style.animationDelay = `${index * 70}ms`; const letter = String.fromCharCode(65 + index); button.innerHTML = `<span class="choice-key">${letter}</span><span class="choice-label">${choice}</span>`; button.dataset.index = index; button.addEventListener('click', () => answer(index, button)); button.addEventListener('mouseenter', () => button.classList.add('is-focused')); button.addEventListener('mouseleave', () => button.classList.remove('is-focused')); answers.appendChild(button); });
 }
 
 function answer(index, button) {

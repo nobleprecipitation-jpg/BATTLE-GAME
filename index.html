@@ -71,8 +71,48 @@
           <div class="sparks" aria-hidden="true"></div>
           <div class="damage-layer" id="damage-layer" aria-hidden="true"></div>
           <div class="weather-layer" id="weather-layer" aria-hidden="true"></div>
-          <div class="combatant enemy-side"><div class="nameplate enemy-plate"><span id="enemy-level">LV. 01</span><strong id="enemy-name">MIRA</strong><div class="hp-track"><span id="enemy-hp" class="hp-fill"></span></div><small><b id="enemy-hp-text">100</b> / 100 HP</small></div><div class="enemy-stage"><div id="enemy-sprite" class="sprite enemy-sprite sprite-mira"><div class="sprite-face"></div><div class="sprite-body"></div></div><div class="battle-platform enemy-platform" aria-hidden="true"></div></div></div>
-          <div class="combatant player-side"><div id="player-sprite" class="sprite player-sprite"><div class="sprite-face"></div><div class="sprite-body"></div></div><div class="nameplate player-plate"><span>STREAK <b id="combo-label">0</b></span><strong>ASTER <small>LV. 05</small></strong><div class="hp-track"><span id="player-hp" class="hp-fill"></span></div><small><b id="player-hp-text">100</b> / 100 HP</small></div></div>
+
+          <!-- TOP LEFT: Enemy Nameplate & HP Bar -->
+          <div class="nameplate enemy-plate">
+            <div class="nameplate-header">
+              <strong id="enemy-name">MIRA</strong>
+              <span id="enemy-level">LV. 01</span>
+            </div>
+            <div class="hp-bar-wrapper">
+              <span class="hp-label">HP</span>
+              <div class="hp-track"><span id="enemy-hp" class="hp-fill"></span></div>
+            </div>
+            <small class="hp-values"><b id="enemy-hp-text">100</b> / 100 HP</small>
+          </div>
+
+          <!-- TOP RIGHT: Enemy Sprite & Ground Platform -->
+          <div class="combatant enemy-side">
+            <div class="enemy-stage">
+              <div id="enemy-sprite" class="sprite enemy-sprite sprite-mira"></div>
+              <div class="battle-platform enemy-platform" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- BOTTOM LEFT: Player Sprite & Ground Platform -->
+          <div class="combatant player-side">
+            <div class="player-stage">
+              <div id="player-sprite" class="sprite player-sprite"></div>
+              <div class="battle-platform player-platform" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- BOTTOM RIGHT: Player Nameplate & HP Bar -->
+          <div class="nameplate player-plate">
+            <div class="nameplate-header">
+              <strong>ASTER <small id="player-level">LV. 05</small></strong>
+              <span>STREAK <b id="combo-label">0</b></span>
+            </div>
+            <div class="hp-bar-wrapper">
+              <span class="hp-label">HP</span>
+              <div class="hp-track"><span id="player-hp" class="hp-fill"></span></div>
+            </div>
+            <small class="hp-values"><b id="player-hp-text">100</b> / 100 HP</small>
+          </div>
         </div>
       </div>
       <section class="battle-console">
