@@ -115,14 +115,22 @@ function loadEnemy() {
 }
 
 function showDialogue(message, next) {
-  state.locked = true; state.currentMessage = message; answers.innerHTML = ''; battleStatus.textContent = 'Press Enter or tap the arena to continue.'; typeText(message);
+  state.locked = true; state.currentMessage = message; answers.innerHTML = ''; battleStatus.textContent = 'Preparing lesson challenge...';
+  typeText(message, () => {
+    window.setTimeout(() => {
+      if (state.locked && state.currentScreen === 'battle') {
+        state.locked = false;
+        next();
+      }
+    }, 1000);
+  });
   const go = () => { if (!state.locked) return; clearTimeout(state.typeTimer); state.typingActive = false; state.locked = false; next(); };
   const handleDialogueKey = (event) => { if (event.key === 'Enter') { event.preventDefault(); if (state.typingActive) { clearTimeout(state.typeTimer); questionText.textContent = state.currentMessage; state.typingActive = false; state.locked = false; next(); } else { go(); } } };
   document.addEventListener('keydown', handleDialogueKey, { once: true });
   arena.onclick = go;
 }
 
-function typeText(message) { clearTimeout(state.typeTimer); state.currentMessage = message; questionText.textContent = ''; state.typingActive = true; let index = 0; const write = () => { questionText.textContent = message.slice(0, index); if (index < message.length) { index += 1; state.typeTimer = window.setTimeout(write, settings.textSpeed); } else { state.typingActive = false; } }; write(); }
+function typeText(message, onComplete) { clearTimeout(state.typeTimer); state.currentMessage = message; questionText.textContent = ''; state.typingActive = true; let index = 0; const write = () => { questionText.textContent = message.slice(0, index); if (index < message.length) { index += 1; state.typeTimer = window.setTimeout(write, settings.textSpeed); } else { state.typingActive = false; if (onComplete) onComplete(); } }; write(); }
 
 function getCurrentEnemy() { return state.enemies?.[state.enemyIndex] || null; }
 function getCurrentQuestion() { const enemy = getCurrentEnemy(); if (!enemy?.questions) return null; return enemy.questions[state.questionIndex] || null; }
