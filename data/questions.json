@@ -51,22 +51,22 @@
           "correct": 1
         },
         {
-          "text": "Which application layer protocol operates over TCP port 80/443 to facilitate hypertext document transfer across web clients?",
+          "text": "What is the main responsibility of the Internet Engineering Task Force (IETF)?",
           "choices": [
-            "HTTP / HTTPS protocol suites for web content retrieval",
-            "FTP / SFTP protocol suites for remote file management",
-            "SMTP / IMAP protocol suites for electronic mail transfer",
-            "DNS / DHCP protocol suites for network IP assignment"
+            "Developing open Internet standards.",
+            "Assigning IP addresses to Internet users.",
+            "Managing Internet service providers worldwide.",
+            "Manufacturing networking equipment."
           ],
           "correct": 0
         },
         {
-          "text": "What distinguishes a Layer 2 network switch from a Layer 3 network router during data delivery?",
+          "text": "Which statement correctly compares IPv4 and IPv6?",
           "choices": [
-            "Switches route data globally using IP, while routers handle local MAC addresses",
-            "Switches forward frames using MAC addresses within a local LAN segment",
-            "Switches convert binary packets into optical pulses for long-haul backbones",
-            "Switches encrypt data payloads, while routers decrypt incoming header fields"
+            "Both IPv4 and IPv6 use 128-bit addresses but different formats.",
+            "IPv4 uses 32-bit addresses, while IPv6 uses 128-bit addresses.",
+            "IPv6 uses fewer addresses than IPv4 because it is more efficient.",
+            "IPv4 uses hexadecimal notation, while IPv6 uses decimal notation."
           ],
           "correct": 1
         }
@@ -77,12 +77,12 @@
       "shortName": "PAT",
       "questions": [
         {
-          "text": "What is the primary conceptual purpose of the 7-Layer Open Systems Interconnection (OSI) reference model?",
+          "text": "Which sequence correctly shows the evolution of the Internet?",
           "choices": [
-            "Standardizing network functions into distinct modular layers for interoperability",
-            "Compiling client-side web application scripts into assembly instructions",
-            "Enforcing hardware encryption standards on consumer router motherboard chips",
-            "Allocating physical storage sectors across network-attached hard drive arrays"
+            "ARPANET → TCP/IP → World Wide Web → Broadband",
+            "World Wide Web → ARPANET → Broadband → TCP/IP",
+            "Broadband → TCP/IP → ARPANET → World Wide Web",
+            "TCP/IP → Broadband → ARPANET → World Wide Web"
           ],
           "correct": 0
         },
