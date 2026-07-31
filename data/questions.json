@@ -15,12 +15,12 @@
           "correct": 0
         },
         {
-          "text": "What fundamental advantage does a global network of interconnected devices provide over isolated standalone systems?",
+          "text": "What does Internet Architecture refer to?",
           "choices": [
-            "It eliminates the physical hardware requirement for data storage",
-            "It enables distributed resource sharing and standardized data exchange",
-            "It guarantees zero latency and immune security against data interception",
-            "It allows single-core processors to execute tasks without operating systems"
+            "The collection of websites available on the Internet.",
+            "The physical and logical framework that enables devices worldwide to communicate.",
+            "The software installed on every computer connected to the Internet.",
+            "The web's design and system that allows users to create and share content online."
           ],
           "correct": 1
         },
@@ -97,12 +97,12 @@
           "correct": 0
         },
         {
-          "text": "What occurs at the transport layer when network congestion degrades packet delivery performance?",
+          "text": "If one packet takes a different route than the others, what allows the original message to be reconstructed correctly?",
           "choices": [
+            "TCP reassembles the packets using their information.",
             "TCP congestion control reduces transmission window size and triggers retransmissions",
-            "The network router automatically deletes all client user accounts from the database",
-            "The underlying physical fiber cables shut down to prevent electrical overheating",
-            "Web browser applications force a hard system reboot to clear network cache"
+            "Routers force all packets to travel the same path.",
+            "Each router stores a copy of the complete message."
           ],
           "correct": 0
         }
