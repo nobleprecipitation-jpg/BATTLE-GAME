@@ -17,10 +17,10 @@
         {
           "text": "What does Internet Architecture refer to?",
           "choices": [
-            "The collection of websites available on the Internet.",
-            "The physical & logical framework that enables devices worldwide to communicate.",
-            "The software installed on every computer connected to the Internet.",
-            "The web's design and system that allows users to create and share content online."
+            "The collection of websites available on the Internet",
+            "The physical & logical framework that grants devices worldwide to communicate",
+            "The software installed on every computer connected to the Internet",
+            "The web's design and system that allows users to create and share content online"
           ],
           "correct": 1
         },
