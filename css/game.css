@@ -745,11 +745,11 @@ body {
 
 .credits-panel {
   max-height: 84vh;
-  overflow: hidden;
 }
 
 .credits-scroll {
-  animation: creditsScroll 16s linear forwards;
+  animation: none !important;
+  transform: none !important;
 }
 
 .credits-scroll h2 {
