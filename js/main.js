@@ -188,6 +188,7 @@ function showScreen(screen) {
 }
 
 async function startGame() {
+  closeOverlay();
   if (!state.dataReady) {
     try {
       await loadQuestions();
