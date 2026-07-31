@@ -219,6 +219,7 @@ function loadEnemy() {
   const enemy = state.enemies[state.enemyIndex];
   state.questionIndex = 0;
   state.enemyHealth = 100;
+  state.playerHealth = 100;
   state.roundCorrect = 0;
   state.roundWrong = 0;
   state.locked = false;
@@ -226,17 +227,17 @@ function loadEnemy() {
   enemyLevel.textContent = `LV. ${enemy.level}`;
   enemySprite.className = `sprite enemy-sprite ${enemy.sprite}`;
   enemySprite.style.opacity = "1";
-  state.enemyHealth = 100;
   enemyHp.style.width = "100%";
   enemyHpText.textContent = "100";
-  playerHp.style.width = `${state.playerHealth}%`;
-  playerHpText.textContent = state.playerHealth;
+  playerHp.style.width = "100%";
+  playerHpText.textContent = "100";
   roundLabel.textContent = `0${state.enemyIndex + 1} / 03`;
   const currentWeather = enemy.weather;
   weatherLabel.textContent = currentWeather;
   arena.className = `arena stage-${enemy.stage} stage-${currentWeather.toLowerCase()}`;
   weatherLayer.setAttribute("data-weather", currentWeather);
   updateNetworkStatus();
+  updateBars();
   showDialogue(enemy.intro, renderQuestion);
 }
 
@@ -603,26 +604,31 @@ function showCredits() {
   overlay.hidden = false;
   overlayPanel.className = "overlay-panel credits-panel";
   overlayPanel.innerHTML = `
-    <div class="credits-scroll">
-      <p class="eyebrow">GROUP #3 DECA-EEWAN PRESENTS</p>
-      <h2>QUIZMON<br><span>BATTLE ACADEMY</span></h2>
+    <div class="credits-viewport">
+      <div class="credits-scroll">
+        <p class="eyebrow">GROUP #3 DECA-EEWAN PRESENTS</p>
+        <h2>QUIZMON<br><span>BATTLE ACADEMY</span></h2>
 
-      <p>Lead Game Developer<br><b>Patrick Rainiel A. Syparrado</b></p>
+        <p class="role-title">Lead Game Developer</p>
+        <p class="role-names"><b>Patrick Rainiel A. Syparrado</b></p>
 
-      <p>Group Members & Contributors<br>
-        <b>Arsenic Vince Esperat</b>
-        <b>Benjamin Olidan</b>
-        <b>Bryan Manrique</b>
-        <b>Ethan Edu</b>
-        <b>Gian Carlo Pat</b>
-        <b>Jay Francis Regala</b>
-        <b>Ric Enzo Sorel</b>
-        <b>Winford Ducay</b>
-      </p>
+        <p class="role-title">Group Members & Contributors</p>
+        <p class="role-names">
+          <b>Arsenic Vince Esperat</b>
+          <b>Benjamin Olidan</b>
+          <b>Bryan Manrique</b>
+          <b>Ethan Edu</b>
+          <b>Gian Carlo Pat</b>
+          <b>Jay Francis Regala</b>
+          <b>Ric Enzo Sorel</b>
+          <b>Winford Ducay</b>
+        </p>
 
-      <p>Special Thanks & Adviser<br><b>Sir Chris Gealan</b></p>
+        <p class="role-title">Special Thanks & Adviser</p>
+        <p class="role-names"><b>Sir Chris Gealan</b></p>
 
-      <p class="credits-end">Thank you for playing!</p>
+        <p class="credits-end">✦ Thank you for playing! ✦</p>
+      </div>
     </div>
     <button data-overlay-action="close">Return to Title</button>
   `;
