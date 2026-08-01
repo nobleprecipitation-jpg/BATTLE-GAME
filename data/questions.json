@@ -100,7 +100,7 @@
           "text": "If one packet takes a different route than the others, what allows the original message to be reconstructed correctly?",
           "choices": [
             "TCP reassembles the packets using their information.",
-            "TCP congestion control reduces transmission size & triggers retransmissions",
+            "TCP stores all packets inside routers until they arrive together.",
             "Routers force all packets to travel the same path.",
             "Each router stores a copy of the complete message."
           ],
