@@ -102,7 +102,7 @@
             "TCP reassembles the packets using their information.",
             "TCP stores all packets inside routers until they arrive together.",
             "Routers force all packets to travel the same path.",
-            "Each router stores a copy of the complete message."
+            "Every router stores a copy of the complete message."
           ],
           "correct": 0
         }
